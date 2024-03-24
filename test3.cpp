@@ -13,9 +13,19 @@ struct data
 
 
 void song(const char * name = "O my papa", int n = 1);
-
+    namespace elements
+    {
+        namespace fire
+        {
+            int flame;
+        } // namespace fire
+        float water;
+    } // namespace elements
+    using namespace elements::fire;
 int main()
 {
+
+    std::cin >> elements::water;
     const data d = {"hello", 1};
 }
 
