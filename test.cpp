@@ -13,10 +13,19 @@ const free_throws & clone(free_throws &ft)
 	return *pt;
 }
 
+namespace test
+{
+	struct session
+	{int a; int b;};
+	void test(session &s) {return;}
+} // namespace test
+
+struct session
+{int a; int b;};
 int main(void)
 {
     using namespace std;
-	free_throws three = {"Minnie Max", 7, 9};
-	const free_throws &jolly = clone(three);
+	struct session s;
+	test::test(s);
     return 0;
 }
