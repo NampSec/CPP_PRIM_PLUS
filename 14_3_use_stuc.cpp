@@ -42,9 +42,20 @@ void set(Student & sa, int n)
     cout << "Please enter the student's name: ";
     getline(cin, sa);
     cout << "Please enter " << n << " quiz scores:\n";
-    for (int i = 0; i < n; ++i)
+    for (int i = 0; i < n; )
     {
-        cin >> sa[i];
+        if (cin >> sa[i])
+        {
+            ++i;
+        }
+        else
+        {
+            cin.clear();
+            cin.ignore();
+            // 忽略错误的输入直到换行符
+            // 作用类似于清空输入缓冲区
+            cout << "Bad input; Please enter a number: ";
+        }
     }
     while (cin.get() != '\n')
         continue;
