@@ -44,9 +44,9 @@ void Waiter::Show() const
 
 // Singer methods
 
-char * Singer::pv[] = {"other", "alto", "contralto",
+char * Singer::pv[Singer::Vtypes] = {"other", "alto", "contralto",
             "soprano", "bass", "baritone", "tenor"};
-
+// 这里是static的初始化，方括号中当然能填定义中的数值
 void Singer::Set()
 {
     Worker::Set();
