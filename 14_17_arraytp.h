@@ -1,16 +1,51 @@
-// arraytp.h -- template class with array
+//arraytp.h  -- Array Template
 #ifndef ARRAYTP_H_
 #define ARRAYTP_H_
-template <class Type, int n>
+
+#include <iostream>
+#include <cstdlib>
+
+template <class T, int n>
 class ArrayTP
 {
 private:
-    Type arr[n];
+    T ar[n];
 public:
+    ArrayTP() {};
+    explicit ArrayTP(const T & v);
+    virtual T & operator[](int i);
+    virtual T operator[](int i) const;
+};
 
-    ArrayTP() {}
-    explicit ArrayTP(const Type & v);
-    virtual Type & operator[](int i);
-    virtual Type operator[](int i) const;
-    virtual int size() const { return n; }
+template <class T, int n>
+ArrayTP<T,n>::ArrayTP(const T & v)
+{
+    for (int i = 0; i < n; i++)
+        ar[i] = v;
 }
+
+template <class T, int n>
+T & ArrayTP<T,n>::operator[](int i)
+{
+    if (i < 0 || i >= n)
+    {
+        std::cerr << "Error in array limits: " << i
+            << " is out of range\n";
+        std::exit(EXIT_FAILURE);
+    }
+    return ar[i];
+}
+
+template <class T, int n>
+T ArrayTP<T,n>::operator[](int i) const
+{
+    if (i < 0 || i >= n)
+    {
+        std::cerr << "Error in array limits: " << i
+            << " is out of range\n";
+        std::exit(EXIT_FAILURE);
+    }
+    return ar[i]; 
+}
+
+#endif
